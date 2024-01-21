@@ -2,8 +2,11 @@ package com.example.gscindoorposition
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import androidx.gridlayout.widget.GridLayout;
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -21,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         TestTopic = findViewById(R.id.Title)
         Testbtn = findViewById(R.id.StatusBtn)
 
+        // 创建 GridLayout 并添加 ImageView
+        setupGridLayout()
+
+
         handler = Handler()
         runnable = object : Runnable {
             override fun run() {
@@ -34,6 +41,34 @@ class MainActivity : AppCompatActivity() {
         }
         handler.post(runnable)
 
+    }
+    // 封装添加 ImageView 到 GridLayout 的函数
+    private fun setupGridLayout() {
+        // 获取 GridLayout
+        val gridLayout: GridLayout = findViewById(R.id.gridLayout)
+        println("get grid")
+        val amount: Int = 100
+        for(i in 1 until amount){
+            for(j in 1 until amount){
+                val imageView = createImageView(R.drawable.location, i, j, 1000/amount)
+                gridLayout.addView(imageView)
+                println("img " + i.toString() + " " + j.toString())
+            }
+        }
+    }
+    // 创建 ImageView 并设置布局参数的辅助函数
+    private fun createImageView(imageResId: Int, column: Int, row: Int, imgSize: Int): ImageView {
+        val imageView = ImageView(this)
+        val params = GridLayout.LayoutParams().apply {
+            width = imgSize
+            height = imgSize
+            setGravity(Gravity.FILL)
+            columnSpec = GridLayout.spec(column)
+            rowSpec = GridLayout.spec(row)
+        }
+        imageView.layoutParams = params
+        imageView.setImageResource(imageResId)
+        return imageView
     }
 
     fun ChangeGreetingText(view: View) {
