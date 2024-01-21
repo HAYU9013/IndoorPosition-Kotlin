@@ -36,12 +36,13 @@
         android:id="@+id/load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="22dp"
         android:text="Load"
         app:layout_constraintBottom_toTopOf="@+id/reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.229"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
     <Button
         android:id="@+id/save"
@@ -60,16 +61,26 @@
         android:id="@+id/StatusBtn"
         android:layout_width="111dp"
         android:layout_height="112dp"
+        android:layout_marginBottom="72dp"
+        android:onClick="ChangeGreetingText"
         android:text="EDIT"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="543dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toEndOf="@+id/load" />
 
     <ImageView
         android:id="@+id/MapView"
         android:layout_width="345dp"
         android:layout_height="344dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="81dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="#000000"
+        android:src="@drawable/qrcode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.217"
+        app:srcCompat="@drawable/qrcode"
+        tools:srcCompat="@color/purple_200" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
