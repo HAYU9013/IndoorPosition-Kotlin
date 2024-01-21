@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Gtext = findViewById(R.id.GreetingView)
+        Gtext = findViewById(R.id.Title)
     }
 
     fun ChangeGreetingText(view: View) {
