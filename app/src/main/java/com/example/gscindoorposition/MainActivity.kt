@@ -1,5 +1,6 @@
 package com.example.gscindoorposition
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.Gravity
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var TestTopic: TextView
     private lateinit var Testbtn: Button
+    private lateinit var changePageBnt: Button
     private var clickCnt = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         SecondFile.hello();
@@ -30,9 +32,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         TestTopic = findViewById(R.id.Title)
         Testbtn = findViewById(R.id.StatusBtn)
+        changePageBnt = findViewById(R.id.load)
+
 
         // 创建 GridLayout 并添加 ImageView
         setupGridLayout()
+
+
+
 
 
         handler = Handler()
@@ -92,6 +99,12 @@ class MainActivity : AppCompatActivity() {
         TestTopic.text = "click " + clickCnt.toString()
         // Toast.makeText(this, clickCnt.toString(), Toast.LENGTH_LONG).show()
 
+    }
+
+    fun changeThePage(view: View){
+        println("change the page")
+        var intent = Intent(this, SecondPage::class.java)
+        startActivity(intent)
     }
     override fun onDestroy() {
         // 移除所有未执行的任务，以防止内存泄漏

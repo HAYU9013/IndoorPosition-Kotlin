@@ -89,6 +89,7 @@
             android:id="@+id/load"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="changeThePage"
             android:text="Load" />
 
         <Button
