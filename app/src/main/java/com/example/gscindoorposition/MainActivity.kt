@@ -5,10 +5,11 @@ import android.os.Handler
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
-import androidx.gridlayout.widget.GridLayout;
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.gridlayout.widget.GridLayout
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var Testbtn: Button
     private var clickCnt = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
+        SecondFile.hello();
+        SecondFile.goodbye("jack")
+        SecondFile.changeCnt(10)
+        SecondFile.goodbye("jack")
+        SecondFile.goodbye("jack")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         TestTopic = findViewById(R.id.Title)
@@ -33,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 // 在这里执行需要定期执行的任务
                 // 例如：在控制台打印一条消息
-                println("任务执行时间: ${System.currentTimeMillis()}")
+                // println("任务执行时间: ${System.currentTimeMillis()}")
 
                 // 重复执行该任务，间隔为五秒
                 handler.postDelayed(this, 500)
@@ -47,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         // 获取 GridLayout
         val gridLayout: GridLayout = findViewById(R.id.gridLayout)
         println("get grid")
-        val amount: Int = 100
+        val amount: Int = 5
         for(i in 1 until amount){
             for(j in 1 until amount){
                 val imageView = createImageView(R.drawable.location, i, j, 1000/amount)
@@ -72,6 +79,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun ChangeGreetingText(view: View) {
+        println("click"  + clickCnt.toString())
+        clickCnt++
+        TestTopic.text = "click " + clickCnt.toString()
+        // Toast.makeText(this, clickCnt.toString(), Toast.LENGTH_LONG).show()
+
+    }
+
+    fun SendREST(view: View) {
         println("click"  + clickCnt.toString())
         clickCnt++
         TestTopic.text = "click " + clickCnt.toString()
