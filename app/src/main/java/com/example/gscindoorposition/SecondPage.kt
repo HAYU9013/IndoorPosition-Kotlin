@@ -1,15 +1,19 @@
 package com.example.gscindoorposition
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-
 import android.media.MediaPlayer
+import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SecondPage : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var isPlaying = false
+    private var apiClient: ApiClient? = null
+    private var getApi: GetApi? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.second_page)
@@ -22,6 +26,26 @@ class SecondPage : AppCompatActivity() {
                 // 如果没有播放，则开始播放
                 startPlaying()
             }
+        }
+
+        val getDataButton: Button = findViewById(R.id.getfromweb)
+
+        apiClient = ApiClient()
+        getApi = apiClient!!.testWebData()!!.create(GetApi::class.java)
+        getDataButton.setOnClickListener {
+            println("getting data")
+            val call: Call<DataResponse?>? = getApi?.getJsonData(5)
+
+            call?.enqueue(object : Callback<DataResponse?> {
+                override fun onResponse(call: Call<DataResponse?>, response: Response<DataResponse?>) {
+                    var tmp: String = response.body()?.toString() ?: ""
+                    println(tmp)
+                }
+
+                override fun onFailure(call: Call<DataResponse?>, t: Throwable) {
+                    println("抓取失敗")
+                }
+            })
         }
     }
     private fun startPlaying() {
