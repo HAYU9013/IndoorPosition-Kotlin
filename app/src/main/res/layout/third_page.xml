@@ -12,6 +12,14 @@
         android:text="Welecome to third page"
         android:textSize="28dp" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter text here"
+        android:inputType="text" />
+
     <Button
         android:id="@+id/OkHttpGet"
         android:layout_width="match_parent"

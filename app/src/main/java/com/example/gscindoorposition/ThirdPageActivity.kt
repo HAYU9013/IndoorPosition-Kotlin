@@ -2,6 +2,8 @@ package com.example.gscindoorposition
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
@@ -44,18 +46,28 @@ class ThirdPageActivity : AppCompatActivity() {
 
     fun OkHttpGetFun(view: View){
         println("ok http get")
+
+        // get input
+        val editText = findViewById<EditText>(R.id.editText)
+        val userInput = editText.text.toString().trim()
+
+
         GlobalScope.launch(Dispatchers.IO) {
             val request = Request.Builder()
-                .url("https://jsonplaceholder.typicode.com/posts")
+                .url("https://jsonplaceholder.typicode.com/posts/" + userInput)
                 .build()
             try{
                 val response = client.newCall(request).execute()
-                println(response.body?.string())
+                println(response.body?.string().toString())
+
+
             } catch (e: Exception){
                 e.printStackTrace()
             }
 
+
         }
+
 
     }
     data class Person(val name: String, val age: Int, val userId: Int)
