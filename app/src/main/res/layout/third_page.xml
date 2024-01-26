@@ -28,4 +28,12 @@
         android:onClick="OkHttpPostFun"
         android:text="OkHttpPost" />
 
+    <Button
+        android:id="@+id/JsonConvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="JsonConvert"
+        android:text="JsonConvert" />
+
 </LinearLayout>

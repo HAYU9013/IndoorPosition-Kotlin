@@ -22,6 +22,24 @@ class ThirdPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.third_page)
+
+    }
+    data class Car(val make: String, val model: String, val year: Int)
+    fun JsonConvert(view:View){
+        // object to json string
+        val myCar = Car("Toyota", "Camry", 2022)
+        val gson = Gson()
+        val json = gson.toJson(myCar)
+        println("myCar json $json")
+
+        // json string to object
+        val carFromJson = gson.fromJson(json, Car::class.java)
+        // check object
+        println("Car Object from JSON: $carFromJson")
+        println("make ${carFromJson.make}")
+        println("model ${carFromJson.model}")
+        println("year ${carFromJson.year}")
+
     }
 
     fun OkHttpGetFun(view: View){
