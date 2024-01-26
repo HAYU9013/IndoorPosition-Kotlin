@@ -29,7 +29,7 @@
             android:name=".SecondPage">
         </activity>
         <activity
-            android:name=".thirdPage">
+            android:name=".ThirdPageActivity">
         </activity>
     </application>
 

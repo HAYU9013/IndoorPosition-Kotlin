@@ -101,9 +101,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun changeThePage(view: View){
-        println("change the page")
+    fun changeToSecondPage(view: View){
+        println("change to second page")
         var intent = Intent(this, SecondPage::class.java)
+        startActivity(intent)
+    }
+    fun changeToThirdPage(view: View){
+        println("change to third page " )
+        var intent = Intent(this, ThirdPageActivity::class.java)
         startActivity(intent)
     }
     override fun onDestroy() {
